@@ -4,8 +4,6 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System;
-
 namespace Ucu.Poo.Persons
 {
     /// <summary>
@@ -23,8 +21,8 @@ namespace Ucu.Poo.Persons
 
         private static void IntroducePersons()
         {
-            Person lucho = new Person("Luis", "Suárez");
-            Person chino = new Person("Sergio", "Rochet");
+            Person lucho = new Person("Luis Suárez", "1234567-2");
+            Person chino = new Person("Sergio Rochet", "1234567-2");
             chino.IntroduceTo(lucho);
             lucho.IntroduceTo(chino);
         }

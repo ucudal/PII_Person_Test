@@ -24,31 +24,23 @@
         </member>
         <member name="M:Ucu.Poo.Persons.Person.#ctor(System.String,System.String)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:Ucu.Poo.Persons.Person"/> con el nombre y apellidos recibidos como argumento.
+            Inicializa una nueva instancia de la clase <see cref="T:Ucu.Poo.Persons.Person"/> con
+            el nombre y la cédula —id— recibidos como argumento.
             </summary>
-            <param name="name">El nombre de la persona.</param>
-            <param name="familyName">El apellido de la persona.</param>
+            <param name="name">El nombre completo de la persona.</param>
+            <param name="id">La cédula de la persona.</param>
         </member>
         <member name="P:Ucu.Poo.Persons.Person.Name">
             <summary>
-            Obtiene o establece el nombre de la persona. El texto no tiene espacios al comienzo ni al final -los espacios son removidos al asignar el texto-.
+            Obtiene o establece el nombre de la persona. El nombre se puede
+            establecer sólo si no está en blanco.
             </summary>
             <value>El nombre de la persona.</value>
         </member>
-        <member name="P:Ucu.Poo.Persons.Person.FamilyName">
+        <member name="P:Ucu.Poo.Persons.Person.Id">
             <summary>
-            Obtiene o establece el apellido de la persona. El texto no tiene espacios al comienzo ni al final -los espacios son removidos al asignar el texto-.
-            </summary>
-            <value>El apellido de la persona.</value>
-        </member>
-        <member name="P:Ucu.Poo.Persons.Person.FullName">
-            <summary>
-             Obtiene el nombre completo de la persona concatenando el nombre y el apellido.
-            </summary>
-        </member>
-        <member name="P:Ucu.Poo.Persons.Person.ID">
-            <summary>
-            Obtiene o establece la cédula de identidad de la persona.
+            Obtiene o establece la cédula —id— de la persona. La cédula se puede
+            establecer solo si es válida.
             </summary>
         </member>
         <member name="M:Ucu.Poo.Persons.Person.IntroduceTo(Ucu.Poo.Persons.Person)">

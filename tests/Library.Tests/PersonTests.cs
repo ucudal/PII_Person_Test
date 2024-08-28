@@ -3,102 +3,77 @@
 // Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //------------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using NUnit.Framework;
-using Ucu.Poo.Persons;
 
-namespace Ucu.Poo.Persons.Tests
+namespace Ucu.Poo.Persons.Tests;
+
+/// <summary>
+/// Tests para la clase <see cref="Person"/>.
+/// </summary>
+public class PersonTests
 {
     /// <summary>
-    /// Tests para la clase <see cref="Person"/>.
+    /// Prueba getters y setters de la clase <see cref="Person"/>.
     /// </summary>
-    public class PersonTests
+    [Test]
+    public void TestProperties()
     {
-        /// <summary>
-        /// Prueba getters y setters de la clase <see cref="Person"/>.
-        /// </summary>
-        [Test]
-        public void TestProperties()
+        const string name = "Nombre Apellido";
+
+        Person person = new Person(name, "1234567-2");
+
+        Assert.That(person.Name, Is.EqualTo(name));
+
+        const string anotherName = "John Doe";
+
+        person.Name = anotherName;
+
+        Assert.That(person.Name, Is.EqualTo(anotherName));
+    }
+
+    /// <summary>
+    /// Prueba que no se puedan asignar string vacías o null a las
+    /// propiedades de la clase <see cref="Person"/>.
+    /// </summary>
+    [Test]
+    public void TestNullAndEmptyNameAndFamilyName()
+    {
+        const string name = "Nombre Apellido";
+
+        Person person = new Person(name, "1234567-2");
+
+        person.Name = null;
+
+        Assert.AreEqual(name, person.Name);
+
+        person.Name = string.Empty;
+
+        Assert.AreEqual(name, person.Name);
+    }
+
+    /// <summary>
+    /// Prueba el método <see cref="Person.IntroduceTo"/>.
+    /// </summary>
+    [Test]
+    public void TestIntroduceTo()
+    {
+        const string name = "One";
+        const string anotherName = "Two";
+        const string hi = "Hola, Two, mi nombre es One";
+
+        Person one = new Person(name, "1234567-2");
+        Person two = new Person(anotherName, "1234567-2");
+
+        using (var consoleContent = new StringWriter())
         {
-            const string name = "Nombre";
-            const string familyName = "Apellido";
+            Console.SetOut(consoleContent);
 
-            Person person = new Person(name, familyName);
+            one.IntroduceTo(two);
 
-            Assert.AreEqual(name, person.Name);
-            Assert.AreEqual(familyName, person.FamilyName);
-
-            const string anotherName = "John";
-            const string anotherFamilyName = "Doe";
-
-            person.Name = anotherName;
-            person.FamilyName = anotherFamilyName;
-
-            Assert.AreEqual(anotherName, person.Name);
-            Assert.AreEqual(anotherFamilyName, person.FamilyName);
-        }
-
-        /// <summary>
-        /// Prueba que no se puedan asignar string vacías o null a las propiedades de la clase <see cref="Person"/>.
-        /// </summary>
-        [Test]
-        public void TestNullAndEmptyNameAndFamilyName()
-        {
-            const string name = "Nombre";
-            const string familyName = "Apellido";
-
-            Person person = new Person(name, familyName);
-
-            person.Name = null;
-            person.FamilyName = null;
-
-            Assert.AreEqual(name, person.Name);
-            Assert.AreEqual(familyName, person.FamilyName);
-
-            person.Name = string.Empty;
-            person.FamilyName = string.Empty;
-
-            Assert.AreEqual(name, person.Name);
-            Assert.AreEqual(familyName, person.FamilyName);
-        }
-
-        /// <summary>
-        /// Prueba el método <see cref="Person.FullName"/>.
-        /// </summary>
-        [Test]
-        public void TestFullName()
-        {
-            const string name = "Nombre";
-            const string familyName = "Apellido";
-            const string fullName = name + " " + familyName;
-
-            Person person = new Person(name, familyName);
-
-            Assert.AreEqual(fullName, person.FullName);
-        }
-
-        /// <summary>
-        /// Prueba el método <see cref="Person.IntroduceTo"/>.
-        /// </summary>
-        [Test]
-        public void TestIntroduceTo()
-        {
-            const string name = "One";
-            const string anotherName = "Two";
-            const string hi = "Hola, Two, mi nombre es One";
-
-            Person one = new Person(name, string.Empty);
-            Person two = new Person(anotherName, string.Empty);
-
-            using (var consoleContent = new StringWriter())
-            {
-                Console.SetOut(consoleContent);
-
-                one.IntroduceTo(two);
-
-                Assert.That(consoleContent.ToString(), Does.Contain(hi));
-            }
+            Assert.That(consoleContent.ToString(), Does.Contain(hi));
         }
     }
 }

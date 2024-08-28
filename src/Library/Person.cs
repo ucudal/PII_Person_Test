@@ -5,110 +5,79 @@
 //-------------------------------------------------------------------------
 using System;
 
-namespace Ucu.Poo.Persons
+namespace Ucu.Poo.Persons;
+
+/// <summary>
+/// Esta clase representa una persona con clase y apellido.
+/// </summary>
+public class Person
 {
+    private string name;
+
+    private string id;
+
     /// <summary>
-    /// Esta clase representa una persona con clase y apellido.
+    /// Inicializa una nueva instancia de la clase <see cref="Person"/> con
+    /// el nombre y la cédula —id— recibidos como argumento.
     /// </summary>
-    public class Person
+    /// <param name="name">El nombre completo de la persona.</param>
+    /// <param name="id">La cédula de la persona.</param>
+    public Person(string name, string id)
     {
-        private string name;
+        this.id = id;
+        this.Name = name;
+    }
 
-        private string familyName;
-
-        private string id;
-
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Person"/> con el nombre y apellidos recibidos como argumento.
-        /// </summary>
-        /// <param name="name">El nombre de la persona.</param>
-        /// <param name="familyName">El apellido de la persona.</param>
-        public Person(string name, string familyName)
+    /// <summary>
+    /// Obtiene o establece el nombre de la persona. El nombre se puede
+    /// establecer sólo si no está en blanco.
+    /// </summary>
+    /// <value>El nombre de la persona.</value>
+    public string Name
+    {
+        get
         {
-            this.Name = name;
-            this.FamilyName = familyName;
+            return this.name;
         }
 
-        /// <summary>
-        /// Obtiene o establece el nombre de la persona. El texto no tiene espacios al comienzo ni al final -los espacios son removidos al asignar el texto-.
-        /// </summary>
-        /// <value>El nombre de la persona.</value>
-        public string Name
+        set
         {
-            get
+            if (!string.IsNullOrEmpty(value))
             {
-                return this.name;
-            }
-
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    this.name = value;
-                }
+                this.name = value;
             }
         }
+    }
 
-        /// <summary>
-        /// Obtiene o establece el apellido de la persona. El texto no tiene espacios al comienzo ni al final -los espacios son removidos al asignar el texto-.
-        /// </summary>
-        /// <value>El apellido de la persona.</value>
-        public string FamilyName
+    /// <summary>
+    /// Obtiene o establece la cédula —id— de la persona. La cédula se puede
+    /// establecer solo si es válida.
+    /// </summary>
+    public string Id
+    {
+        get
         {
-            get
-            {
-                return this.familyName;
-            }
-
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    this.familyName = value;
-                }
-            }
+            return this.id;
         }
 
-        /// <summary>
-        ///  Obtiene el nombre completo de la persona concatenando el nombre y el apellido.
-        /// </summary>
-        public string FullName
+        set
         {
-            get
+            if (IdUtils.IdIsValid(value))
             {
-                return $"{this.Name} {this.FamilyName}";
+                this.id = value;
             }
         }
+    }
 
-        /// <summary>
-        /// Obtiene o establece la cédula de identidad de la persona.
-        /// </summary>
-        public string ID
+    /// <summary>
+    /// Esta persona se presenta con otra.
+    /// </summary>
+    /// <param name="person">La persona a la cual presentarse.</param>
+    public void IntroduceTo(Person person)
+    {
+        if (person != null)
         {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                if (!IdUtils.IdIsValid(value))
-                {
-                    this.id = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Esta persona se presenta con otra.
-        /// </summary>
-        /// <param name="person">La persona a la cual presentarse.</param>
-        public void IntroduceTo(Person person)
-        {
-            if (person != null)
-            {
-                Console.WriteLine($"Hola, {person.Name}, mi nombre es {this.Name}");
-            }
+            Console.WriteLine($"Hola, {person.Name}, mi nombre es {this.Name}");
         }
     }
 }
