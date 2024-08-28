@@ -62,7 +62,7 @@ public class Person
 
         set
         {
-            if (IdUtils.IdIsValid(value))
+            if (!IdUtils.IdIsValid(value))
             {
                 this.id = value;
             }
