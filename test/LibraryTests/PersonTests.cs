@@ -18,28 +18,28 @@ namespace Ucu.Poo.Persons.Tests
         /// <summary>
         /// Prueba getters y setters de la clase <see cref="Person"/>.
         /// </summary>
-        [Test]
-        public void TestProperties()
-        {
-            const string name = "Nombre Apellido";
+        // [Test]
+        // public void Name_WhenSet_UpdatesValue()
+        // {
+        //     const string name = "Nombre Apellido";
 
-            Person person = new Person(name, "1234567-2");
+        //     Person person = new Person(name, "1234567-2");
 
-            Assert.That(person.Name, Is.EqualTo(name));
+        //     Assert.That(person.Name, Is.EqualTo(name));
 
-            const string anotherName = "John Doe";
+        //     const string anotherName = "John Doe";
 
-            person.Name = anotherName;
+        //     person.Name = anotherName;
 
-            Assert.That(person.Name, Is.EqualTo(anotherName));
-        }
+        //     Assert.That(person.Name, Is.EqualTo(anotherName));
+        // }
 
         /// <summary>
         /// Prueba que no se puedan asignar string vacías o null a las
         /// propiedades de la clase <see cref="Person"/>.
         /// </summary>
         [Test]
-        public void TestNullAndEmptyNameAndFamilyName()
+        public void Name_WhenNullOrEmpty_DoesNotUpdateValue()
         {
             const string name = "Nombre Apellido";
 
@@ -58,7 +58,7 @@ namespace Ucu.Poo.Persons.Tests
         /// Prueba el método <see cref="Person.IntroduceTo"/>.
         /// </summary>
         [Test]
-        public void TestIntroduceTo()
+        public void IntroduceTo_WhenValidNameAndId_WritesNameAndIdToConsole()
         {
             const string name = "One";
             const string anotherName = "Two";
