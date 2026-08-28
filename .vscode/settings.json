@@ -2,10 +2,28 @@
     "cSpell.enabled": true,
     "cSpell.language": "en,es",
     "cSpell.words": [
+        "buildtransitive",
+        "contentfiles",
+        "coreclr",
         "dotnet",
         "Doxify",
-        "guión",
-        "reservados"
+        "Doxyfile",
+        "github",
+        "LINQ",
+        "Liskov",
+        "msbuild",
+        "nunit",
+        "preconfiguradas",
+        "Pseudocódigo",
+        "stylecop"
     ],
-    "dotnet.defaultSolution": "Person.sln"
+    "cSpell.ignorePaths": [
+        "/.gitignore",
+        "/docs",
+    ],
+    "dotnet.defaultSolution": "Person.sln", // ← Renombrar para que coincida con la solución
+    "github.copilot.enable": {
+        "*": false
+    },
+    "githubPullRequests.codingAgent.codeLens": false,
 }

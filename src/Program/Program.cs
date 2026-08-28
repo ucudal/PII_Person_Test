@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 // <copyright file="Program.cs" company="Universidad Católica del Uruguay">
 // Copyright (c) Programación II. Derechos reservados.
 // </copyright>
@@ -17,6 +17,7 @@ namespace Ucu.Poo.Persons
         public static void Main()
         {
             IntroducePersons();
+
         }
 
         private static void IntroducePersons()
